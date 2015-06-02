@@ -1,31 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Lesson Applies</h1>
-
-<table>
+<%- model_class = LessonApply -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Student</th>
-      <th>Lesson</th>
-      <th>Created At</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:student_id) %></th>
+      <th><%= model_class.human_attribute_name(:lesson_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @lesson_applies.each do |lesson_apply| %>
       <tr>
-        <td><%= lesson_apply.student.name %></td>
-        <td><%= lesson_apply.lesson.title %></td>
-        <td><%= lesson_apply.created_at %></td>
-        <td><%= link_to 'Show', lesson_apply %></td>
-        <td><%= link_to 'Edit', edit_lesson_apply_path(lesson_apply) %></td>
-        <td><%= link_to 'Destroy', lesson_apply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to lesson_apply.id, lesson_apply_path(lesson_apply) %></td>
+        <td><%= lesson_apply.student_id %></td>
+        <td><%= lesson_apply.lesson_id %></td>
+        <td><%=l lesson_apply.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_lesson_apply_path(lesson_apply), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      lesson_apply_path(lesson_apply),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Lesson apply', new_lesson_apply_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_lesson_apply_path,
+            :class => 'btn btn-primary' %>

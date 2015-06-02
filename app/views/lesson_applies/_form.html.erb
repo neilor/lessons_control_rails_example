@@ -1,25 +1,38 @@
-<%= form_for(@lesson_apply) do |f| %>
-  <% if @lesson_apply.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lesson_apply.errors.count, "error") %> prohibited this lesson_apply from being saved:</h2>
+<%= form_for @lesson_apply, :html => { :class => "form-horizontal lesson_apply" } do |f| %>
 
-      <ul>
-      <% @lesson_apply.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @lesson_apply.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@lesson_apply.errors.count, "error") %> prohibited this lesson_apply from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @lesson_apply.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
+  <div class="control-group">
+    <%= f.label :student_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :student_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@lesson_apply[:student_id]) %>
   </div>
-  <div class="field">
-    <%= f.label :lesson_id %><br>
-    <%= f.text_field :lesson_id %>
+  <div class="control-group">
+    <%= f.label :lesson_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lesson_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@lesson_apply[:lesson_id]) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            lesson_applies_path, :class => 'btn btn-default' %>
+
 <% end %>
