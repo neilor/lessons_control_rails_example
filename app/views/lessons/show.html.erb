@@ -20,5 +20,14 @@
   <%= @lesson.value %>
 </p>
 
+<p>
+  <strong>Students:</strong>
+  <ul>
+    <% @lesson.students.each do |student| %>
+      <li><%= "#{student.name} - Age: #{student.age} - Level: #{student.level}" %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
 <%= link_to 'Back', lessons_path %>
