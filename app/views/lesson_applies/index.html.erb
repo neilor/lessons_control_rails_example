@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lesson Applies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Lesson</th>
+      <th>Created At</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lesson_applies.each do |lesson_apply| %>
+      <tr>
+        <td><%= lesson_apply.student.name %></td>
+        <td><%= lesson_apply.lesson.title %></td>
+        <td><%= lesson_apply.created_at %></td>
+        <td><%= link_to 'Show', lesson_apply %></td>
+        <td><%= link_to 'Edit', edit_lesson_apply_path(lesson_apply) %></td>
+        <td><%= link_to 'Destroy', lesson_apply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lesson apply', new_lesson_apply_path %>

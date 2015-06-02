@@ -1,0 +1,2 @@
+module LessonAppliesHelper
+end

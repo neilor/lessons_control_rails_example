@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lesson_applies
   resources :lessons
   resources :students
   # The priority is based upon order of creation: first created -> highest priority.

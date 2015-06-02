@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= "#{@lesson_apply.student.name} - #{@lesson_apply.student.age}" %>
+</p>
+
+<p>
+  <strong>Lesson:</strong>
+  <%= @lesson_apply.lesson.title %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_apply_path(@lesson_apply) %> |
+<%= link_to 'Back', lesson_applies_path %>
