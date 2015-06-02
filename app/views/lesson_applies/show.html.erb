@@ -5,9 +5,11 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:student_id) %>:</strong></dt>
-  <dd><%= @lesson_apply.student_id %></dd>
+  <dd><%= @lesson_apply.student.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:lesson_id) %>:</strong></dt>
-  <dd><%= @lesson_apply.lesson_id %></dd>
+  <dd><%= @lesson_apply.lesson.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:created_at) %>:</strong></dt>
+  <dd><%= @lesson_apply.created_at %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

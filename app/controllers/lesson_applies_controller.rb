@@ -1,5 +1,6 @@
 class LessonAppliesController < ApplicationController
   before_action :set_lesson_apply, only: [:show, :edit, :update, :destroy]
+  before_action :set_lessons_students, only: [:new, :edit, :create, :update]
 
   # GET /lesson_applies
   # GET /lesson_applies.json
@@ -65,6 +66,11 @@ class LessonAppliesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson_apply
       @lesson_apply = LessonApply.find(params[:id])
+    end
+
+    def set_lessons_students
+      @lessons = Lesson.all
+      @students = Student.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

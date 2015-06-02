@@ -12,6 +12,10 @@
   <dd><%= @lesson.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:value) %>:</strong></dt>
   <dd><%= @lesson.value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:students) %>:</strong></dt>
+  <% @lesson.students.each do |student| %>
+    <dd><%= "#{student.name} - age #{student.age} - level #{student.level}" %></dd>
+  <% end %>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

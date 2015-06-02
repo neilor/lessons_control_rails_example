@@ -12,6 +12,10 @@
   <dd><%= @student.age %></dd>
   <dt><strong><%= model_class.human_attribute_name(:level) %>:</strong></dt>
   <dd><%= @student.level %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:lesson_applies) %>:</strong></dt>
+  <% @student.lesson_applies.each do |lesson_apply| %>
+    <dd><%= "#{l lesson_apply.created_at, format: :short} - #{lesson_apply.lesson.title} - value #{lesson_apply.lesson.value}" %></dd>
+  <% end %>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
